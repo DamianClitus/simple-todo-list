@@ -1,16 +1,46 @@
-var todos = ["Hello",];
+console.log("WELLCOME");
 
-var input = prompt("What would you like to do...");
+var todos = ["Hello"];
 
-while (input !== "quit") {
-    if (input === "list") {
-        console.log(todos);
+window.setTimeout(function () {
+    // put all of your JS code from the lecture here
+
+    var input = prompt("What would you like to do...");
+
+    while (input !== "quit") {
+        if (input === "list") {
+            listTodos();
+        }
+        else if (input == "new") {
+            addTodos();
+        }
+        else if (input === "delete") {
+            deleteTodos();
+        }
+
+        input = prompt("What would you like to do...");
+
     }
-    else if (input == "new") {
+
+    console.log("OK, YOU QUIT THE APP");
+
+    function listTodos() {
+        console.log("**********");
+        todos.forEach(function (todo, i) {
+            console.log(i + ": " + todo);
+        });
+        console.log("**********");
+    }
+
+    function addTodos() {
         var newTodo = prompt("Write a New Todo");
         todos.push(newTodo);
+        console.log("Added a Todo");
     }
 
-
-}
-console.log("OK, YOU QUIT THE APP");
+    function deleteTodos() {
+        var index = prompt("Index of the item you want to remove...");
+        todos.splice(index, 1);
+        console.log("Deleted a Todo");
+    }
+}, 1000);
